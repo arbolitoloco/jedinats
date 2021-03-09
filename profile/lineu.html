@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>ASU JEDI Naturalists | Profile </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/layouts.css">
+  <link rel="stylesheet" href="../css/cards.css">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <!-- Components -->
+  <script src="../js/components/header-component.js" type="text/javascript" defer></script>
+  <script src="../js/components/footer-component.js" type="text/javascript" defer></script>
+  <script src="../js/profile.js" type="text/javascript" defer></script>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="../js/leaflet/leaflet.css" />
+  <script src="../js/leaflet/leaflet.js"></script>
+
+  <!-- Load jQuery and PapaParse to read data from a CSV file -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+</head>
+
+<body class="page">
+  <header-component></header-component>
+  <main>
+    <section>
+      <h2>Student Name</h2>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium id provident inventore doloremque assumenda iste velit, nam voluptatum quam adipisci eum expedita impedit blanditiis quia rerum earum nostrum. Harum, ad?</p>
+      <h2>Commentary/Social Media</h2>
+      <h2>Icons/Mini dashboard</h2>
+    </section>
+    <section>
+      <h2>Map</h2>
+      <div id="map"></div>
+    </section>
+    <section>
+      <h2>Taxa List</h2>
+    </section>
+    <section>
+      <h2>Specimens Table</h2>
+    </section>
+  </main>
+  <footer-component></footer-component>
+  <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="../js/plugins.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    addMap("example");
+  </script>
+
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <!-- <script>
+window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script> -->
+</body>
+
+</html>

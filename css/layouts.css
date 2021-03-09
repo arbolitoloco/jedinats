@@ -1,0 +1,31 @@
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+main,
+nav {
+  /* I prefer to put margin at the bottom to scroll past the bottom of the content for readability. */
+  margin: 0 auto 4rem;
+  /* This width is an arbitrary example. Choose your own value. */
+  max-width: 48rem;
+}
+
+section {
+  /* This value is a personal preference. */
+  padding: 1rem;
+}
+
+#student-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+footer {
+  text-align: center;
+}
+
+#map {
+  height: 380px;
+}
