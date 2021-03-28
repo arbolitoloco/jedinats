@@ -1,26 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="">
 
 <head>
-  <meta charset="utf-8">
-  <title>ASU JEDI Naturalists | Profile </title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <title>ASU JEDI Naturalists | Profile</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="apple-touch-icon" href="icon.png" />
   <!-- Place favicon.ico in the root directory -->
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/layouts.css">
-  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/normalize.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/layouts.css" />
+  <link rel="stylesheet" href="../css/cards.css" />
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" />
 
-  <meta name="theme-color" content="#fafafa">
+  <meta name="theme-color" content="#fafafa" />
 
   <!-- Components -->
   <script src="../js/components/header-component.js" type="text/javascript" defer></script>
@@ -38,10 +39,12 @@
 
 <body class="page">
   <header-component></header-component>
-  <main>
+  <main class="container mx-auto">
     <section>
       <h2>Student Name</h2>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium id provident inventore doloremque assumenda iste velit, nam voluptatum quam adipisci eum expedita impedit blanditiis quia rerum earum nostrum. Harum, ad?</p>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium id provident inventore doloremque assumenda iste velit, nam voluptatum quam adipisci eum expedita impedit blanditiis quia rerum earum nostrum. Harum, ad?
+      </p>
       <h2>Commentary/Social Media</h2>
       <h2>Icons/Mini dashboard</h2>
     </section>
@@ -49,10 +52,10 @@
       <h2>Map</h2>
       <div id="map"></div>
     </section>
-    <section>
+    <section id="taxa">
       <h2>Taxa List</h2>
     </section>
-    <section>
+    <section id="specimens" class="container" style="overflow: auto">
       <h2>Specimens Table</h2>
     </section>
   </main>
@@ -61,9 +64,10 @@
   <script src="../js/plugins.js"></script>
   <script src="../js/main.js"></script>
   <script>
-    addMap("example");
+    addMap("example.csv");
+    getTaxa("example.csv");
+    getSpecimens("example.csv");
   </script>
-
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <!-- <script>
