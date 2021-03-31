@@ -4,8 +4,7 @@
   min-height: 100vh;
 }
 
-main,
-nav {
+main {
   /* I prefer to put margin at the bottom to scroll past the bottom of the content for readability. */
   margin: 0 auto 4rem;
   /* This width is an arbitrary example. Choose your own value. */
@@ -20,10 +19,6 @@ section {
 #student-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
-
-footer {
-  text-align: center;
 }
 
 #map {
