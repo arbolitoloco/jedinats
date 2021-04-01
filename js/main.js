@@ -36,14 +36,23 @@ function addMap(filename) {
     .addTo(map);
 
   // display Carto basemap tiles with light features and labels
+  var imagery = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    {
+      attribution:
+        "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+    }
+  ).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+  controlLayers.addBaseLayer(imagery, "Satellite basemap");
+
   var light = L.tileLayer(
     "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
     {
       attribution:
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
     }
-  ).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
-  controlLayers.addBaseLayer(light, "Carto Light basemap");
+  ); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+  controlLayers.addBaseLayer(light, "Light basemap");
 
   /* Stamen colored terrain basemap tiles with labels */
   var terrain = L.tileLayer(
@@ -53,7 +62,7 @@ function addMap(filename) {
         'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
     }
   ); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
-  controlLayers.addBaseLayer(terrain, "Stamen Terrain basemap");
+  controlLayers.addBaseLayer(terrain, "Terrain basemap");
 
   // see more basemap options at https://leaflet-extras.github.io/leaflet-providers/preview/
 
@@ -71,15 +80,20 @@ function addMap(filename) {
     // For each row, columns `Latitude`, `Longitude`, and `Title` are required
     for (var i in data) {
       var row = data[i];
+      var popup = L.popup()
+        .setContent(
+          `<p class="font-semibold"><em>${row.scientificName}</em></p><p><a class="underline text-green-400" href="#">View occurrence</a>`
+        )
+        .openOn(map);
       // console.log(row.decimalLatitude, row.decimalLongitude, row.id);
       boundsArr.push([row.decimalLatitude, row.decimalLongitude]);
       var marker = L.marker([row.decimalLatitude, row.decimalLongitude], {
         opacity: 1,
-      }).bindPopup(row.scientificName);
+      }).bindPopup(popup);
       marker.addTo(map);
     }
     var bounds = new L.LatLngBounds(boundsArr);
-    map.fitBounds(bounds);
+    map.fitBounds(bounds, { padding: [100, 100] });
   });
 
   map.attributionControl.setPrefix(
@@ -156,40 +170,62 @@ function getSpecimens(filename) {
     });
     let data = results.data;
     let table = document.createElement("table");
-    table.className = "table-auto";
-    table.style = "width:100%; padding-top: 1em;  padding-bottom: 1em;";
+    table.className = "w-full text-left rounded-lg border border-b-0 text-xs";
     let headers = results.meta["fields"];
 
+    let useCols = [
+      "kingdom",
+      "phylum",
+      "class",
+      "order",
+      "family",
+      "scientificName",
+      "scientificNameAuthorship",
+      "recordedBy",
+      "eventDate",
+      "country",
+      "stateProvince",
+      "county",
+      "municipality",
+      "locality",
+      "references",
+    ];
+
     headers.forEach((col) => {
-      table.insertRow();
-      let newCol = table.rows[0].insertCell();
-      newCol.textContent = col;
+      let newRow = table.insertRow();
+      newRow.className = "font-semibold";
+      if (useCols.indexOf(col) > -1) {
+        let newCol = table.rows[0].insertCell();
+        newCol.textContent = col;
+      }
     });
 
     data.forEach((row) => {
-      table.insertRow();
+      let newRow = table.insertRow();
+      newRow.className = "whitespace-no-wrap border";
+      newRow.style =
+        "height: 30px !important; padding: 0 !important; overflow: hidden";
       Object.keys(row).forEach((key, i) => {
-        let newCell = table.rows[table.rows.length - 1].insertCell();
-        newCell.textContent = row[key];
+        // limit to content in useCols
+        if (useCols.indexOf(key) > -1) {
+          let newCell = table.rows[table.rows.length - 1].insertCell();
+          if (row[key] == null) {
+            newCell.textContent = "NULL";
+          } else {
+            switch (key) {
+              case "references":
+                newCell.innerHTML = `<a class="text-green-400 underline" href="${row[key]}">Full Details</a>`;
+                break;
+              case "scientificName":
+                newCell.innerHTML = `<em>${row[key]}</em>`;
+                break;
+              default:
+                newCell.textContent = row[key];
+            }
+          }
+        }
       });
     });
-    // table.className = "table-auto";
-    // let thead = table.createTHead();
-
-    // let thRow = thead.insertRow();
-    // let tbody = table.createTBody();
-    // let tbRow = tbody.insertRow();
-
-    // headers.forEach((item) => {
-    //   let th = document.createElement("th");
-    //   th.innerText = item;
-    //   thRow.appendChild(th);
-    // });
-
-    // data.forEach(row => {
-    //   let td = document.createElement("td");
-    //   td.innerText =
-    // });
 
     specimensContainer.append(table);
   });

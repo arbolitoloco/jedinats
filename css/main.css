@@ -127,11 +127,12 @@ body {
 
 /* This is an arbitrary breakpoint. Choose your own value. */
 
-@media screen and (min-width: 480px) {
+
+/* @media screen and (min-width: 480px) {
   section {
     padding: 2rem;
   }
-}
+} */
 
 
 /* Typography */

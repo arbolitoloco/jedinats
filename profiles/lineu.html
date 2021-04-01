@@ -38,24 +38,50 @@
 </head>
 
 <body class="page">
-  <header-component></header-component>
-  <main class="container mx-auto">
-    <section>
-      <h2>Student Name</h2>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium id provident inventore doloremque assumenda iste velit, nam voluptatum quam adipisci eum expedita impedit blanditiis quia rerum earum nostrum. Harum, ad?
-      </p>
-      <h2>Commentary/Social Media</h2>
-      <h2>Icons/Mini dashboard</h2>
+  <header-component class="w-screen"></header-component>
+  <main class="container lg:w-3/4 md:w-full mx-auto">
+    <section class="grid grid-cols-2 mx-auto bg-gray-100 my-4 rounded-md">
+      <div class="px-10">
+        <h1 class="text-green-600 font-semibold">Carl von Linné</h1>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium id provident inventore doloremque assumenda iste velit, nam voluptatum quam adipisci eum expedita impedit blanditiis quia rerum earum nostrum. Harum, ad?
+        </p>
+        <p class="mt-6">
+          <a class="border border-green-600 text-green-600 hover:bg-green-600 hover:text-gray-200 rounded px-4 py-2 my-4">
+              View my posts at BioKIC
+            </a>
+          <a class="border border-green-600 text-green-600 hover:bg-green-600 hover:text-gray-200 rounded px-4 py-2 my-4 mx-2">
+              View my ORCID
+            </a>
+        </p>
+        <div>
+          <p class="mt-6 text-black font-semibold">
+            Biodiversity portals I've contributed with
+          </p>
+          <ul>
+            <li>Plants</li>
+            <li>Verts</li>
+            <li>Inverts</li>
+          </ul>
+        </div>
+        <p class="mt-10 w-full lg:w-2/5">My social media icons</p>
+      </div>
+      <div>
+        <img class="w-full lg:w-2/5 mx-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Carl_von_Linn%C3%A9.jpg/800px-Carl_von_Linn%C3%A9.jpg" alt="Lineu" />
+      </div>
     </section>
-    <section>
+    <h1 class="text-green-600 font-semibold my-10">My Biodiversity Report</h1>
+    <h2>
+      Specimens and taxa collected, processed and digitized during the JEDI program.
+    </h2>
+    <section class="mt-4">
       <h2>Map</h2>
       <div id="map"></div>
     </section>
     <section id="taxa">
-      <h2>Taxa List</h2>
+      <h2>Species List</h2>
     </section>
-    <section id="specimens" class="container" style="overflow: auto">
+    <section id="specimens" class="block overflow-x-auto">
       <h2>Specimens Table</h2>
     </section>
   </main>

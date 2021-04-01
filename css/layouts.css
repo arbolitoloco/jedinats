@@ -1,26 +1,23 @@
 .page {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  /* display: grid;
+  grid-template-rows: auto 1fr auto; */
   min-height: 100vh;
 }
 
-main {
-  /* I prefer to put margin at the bottom to scroll past the bottom of the content for readability. */
-  margin: 0 auto 4rem;
-  /* This width is an arbitrary example. Choose your own value. */
-  max-width: 48rem;
+section {
+  margin: 4rem 0;
 }
 
-section {
-  /* This value is a personal preference. */
-  padding: 1rem;
+#home-hero {
+  background: url(https://biokic.asu.edu/sites/default/files/nhc.jpg);
+  background-size: cover;
 }
 
 #student-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 #map {
-  height: 380px;
+  height: 480px;
 }

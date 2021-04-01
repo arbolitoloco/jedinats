@@ -22,7 +22,8 @@ function addStudentGallery() {
         let text = document.createElement("p");
         text.innerText = item.shortbio;
         let btn = document.createElement("button");
-        btn.className = "card-action primary";
+        btn.className =
+          "card-action primary border border-green-600 text-green-600 hover:bg-green-600 hover:text-gray-200 rounded px-4 py-2 my-4";
         btn.innerText = "View Page";
         btn.onclick = function () {
           window.location = `/profile/${item.id}.html`;
