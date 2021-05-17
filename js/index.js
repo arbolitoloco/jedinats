@@ -26,7 +26,7 @@ function addStudentGallery() {
           "card-action primary border border-green-600 text-green-600 hover:bg-green-600 hover:text-gray-200 rounded px-4 py-2 my-4";
         btn.innerText = "View Page";
         btn.onclick = function () {
-          window.location = `/profile/${item.id}.html`;
+          window.location = `profile/${item.id}.html`;
         };
         card.appendChild(img);
         content.appendChild(title);

@@ -18,7 +18,7 @@ class Header extends HTMLElement {
         <div @click.away="show = false" :class="{ 'block': show, 'hidden': !show }" class="w-full block flex-grow md:flex md:justify-end md:w-auto">
           <div>
             <a href="/" class="block md:inline-block text-sm px-4 py-2 leading-none rounded text-green-400 font-semibold border-2 border-transparent hover:border-2 hover:border-green-400 hover:underline mt-4 md:mt-0">Home</a>
-            <a href="/about.html" class="block md:inline-block text-sm px-4 py-2 leading-none rounded text-green-400 font-semibold border-2 border-transparent hover:border-2 hover:border-green-400 hover:underline mt-4 md:mt-0">About</a>
+            <a href="about.html" class="block md:inline-block text-sm px-4 py-2 leading-none rounded text-green-400 font-semibold border-2 border-transparent hover:border-2 hover:border-green-400 hover:underline mt-4 md:mt-0">About</a>
           </div>
         </div>
       </nav>
