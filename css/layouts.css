@@ -10,7 +10,7 @@ section {
 
 #home-hero {
   background: url(https://biokic.asu.edu/sites/default/files/nhc.jpg);
-  background-size: cover;
+  background-size: left center;
 }
 
 #student-gallery {
