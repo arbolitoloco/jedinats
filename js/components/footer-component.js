@@ -288,25 +288,14 @@ class Footer extends HTMLElement {
         </svg>
         <p class="opacity-60 text-sm">A research unit of <a class="underline" href="https://thecollege.asu.edu/">The College of Liberal Arts and Sciences</a>.</p>
       </div>
-      <div class="w-full sm:w-1/5 flex flex-col space-y-4">
-        <a class="opacity-60">BioKIC Blog</a>
-        <a class="opacity-60">ASU</a>
-        <a class="opacity-60">Contact</a>
-      </div>
-      <div class="w-full sm:w-1/5 flex flex-col space-y-4">
-        <a class="opacity-60">JEDI Program</a>
-        <a class="opacity-60">Our Team</a>
-        <a class="opacity-60">Blablabla</a>
-      </div>
-      <div class="w-full sm:w-1/5 pt-6 flex items-end mb-1">
-        <div class="flex flex-row space-x-4">
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-instagram"></i>
-        </div>
+      <div class="w-full sm:w-1/2 flex flex-col space-y-4">
+        <a class="opacity-60" href="https://biokic.asu.edu/blogs">BioKIC Blog</a>
+        <a class="opacity-60" href="https://www.asu.edu/">ASU</a>
+        <a class="opacity-60" href="../about.html">JEDI Program</a>
       </div>
     </div>
     <div class="opacity-60 pt-2">
-      <p>© 2021</p>
+      <p class="text-center text-xs mt-4">built by <a href="https://laura.rochaprado.com">Laura Rocha Prado</a> as part as the program &middot 2021</p>
     </div>
   </div>
 </div>
