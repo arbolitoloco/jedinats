@@ -5,7 +5,7 @@ function getStudents() {
   let students = fetch("./data/students.json")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       return data;
     })
     .catch(function (error) {
@@ -20,80 +20,148 @@ function getStudents() {
  */
 function addMap(filename) {
   // Set up initial map center and zoom level
-  var map = L.map("map", {
-    // center: [41.57, -72.69], // EDIT latitude, longitude to re-center map
-    // zoom: 18, // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
+  let map = L.map("map", {
+    // center: [33.757356, -107.382888], // EDIT latitude, longitude to re-center map
+    zoom: 5, // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
+    zoomSnap: 1,
+    maxZoom: 12,
     scrollWheelZoom: false,
-    tap: false,
+    tap: false
   });
 
   /* Control panel to display map layers */
-  var controlLayers = L.control
+  let controlLayers = L.control
     .layers(null, null, {
       position: "topright",
-      collapsed: false,
+      collapsed: false
     })
     .addTo(map);
 
+  // Gets native land territories
+  $.getJSON("https://native-land.ca/api/index.php?maps=territories", function (
+    data
+  ) {
+    nativeLand.addData(data);
+  });
+
+  function style(feature) {
+    // console.log(feature.properties.color);
+    return {
+      fillColor: feature.properties.color,
+      // weight: 2,
+      // opacity: 1,
+      color: "none",
+      // dashArray: "3",
+      fillOpacity: 0.2
+    };
+  }
+
+  function addLabel(feature, layer) {
+    let name = String(feature.properties.Name); // sets the tooltip text
+    layer.bindPopup(name, {
+      permanent: true,
+      opacity: 0.5,
+      direction: "center"
+    });
+  }
+
+  // Add native land territories
+  let nativeLand = L.geoJson(null, {
+    onEachFeature: addLabel,
+    style: style,
+    attribution:
+      'Polygons: <a href="https://native-land.ca/">Native Land Digital</a>, 2021'
+  });
+
+  // Styles native land polygons
+  // Set style function that sets fill color property
+  // nativeLand.addTo(map);
+  controlLayers.addOverlay(nativeLand, "Native Land");
+  // L.control.layers(overlays).addTo(map);
+
   // display Carto basemap tiles with light features and labels
-  var imagery = L.tileLayer(
+  let imagery = L.tileLayer(
     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
     {
       attribution:
-        "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+        "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
     }
   ).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
   controlLayers.addBaseLayer(imagery, "Satellite basemap");
 
-  var light = L.tileLayer(
+  let light = L.tileLayer(
     "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
     {
       attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
     }
   ); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
   controlLayers.addBaseLayer(light, "Light basemap");
 
   /* Stamen colored terrain basemap tiles with labels */
-  var terrain = L.tileLayer(
+  let terrain = L.tileLayer(
     "https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png",
     {
       attribution:
-        'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+        'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
     }
   ); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
   controlLayers.addBaseLayer(terrain, "Terrain basemap");
 
   // see more basemap options at https://leaflet-extras.github.io/leaflet-providers/preview/
 
-  boundsArr = [];
+  let boundsArr = [];
 
   // Read markers data from data.csv
   $.get(`../data/${filename}`, function (csvString) {
     // Use PapaParse to convert string to array of objects
-    var data = Papa.parse(csvString, {
+    let data = Papa.parse(csvString, {
       header: true,
-      dynamicTyping: true,
+      dynamicTyping: true
     }).data;
-
-    // For each row in data, create a marker and add it to the map
+    // Creates a cluster for markers in the same location and adds it to map
+    let markersCluster = L.markerClusterGroup({
+      spiderfyOnMaxZoom: true,
+      removeOutsideVisibleBounds: true,
+      zoomToBoundsOnClick: false
+    }).addTo(map);
+    // For each row in data, create a marker and add it to the map or cluster
     // For each row, columns `Latitude`, `Longitude`, and `Title` are required
-    for (var i in data) {
-      var row = data[i];
-      var popup = L.popup()
+    for (let i in data) {
+      let row = data[i];
+      // console.log(row);
+      let popup = L.popup()
         .setContent(
-          `<p class="font-semibold"><em>${row.scientificName}</em></p><p><a class="underline text-green-400" href="#">View occurrence</a>`
+          `<p class="font-semibold"><em>${row.scientificName}</em></p><p>${row.occurrenceRemarks}</p><p><a class="underline text-green-400" href="${row.references}" target="_blank">View occurrence</a>`
         )
         .openOn(map);
-      // console.log(row.decimalLatitude, row.decimalLongitude, row.id);
-      boundsArr.push([row.decimalLatitude, row.decimalLongitude]);
-      var marker = L.marker([row.decimalLatitude, row.decimalLongitude], {
-        opacity: 1,
-      }).bindPopup(popup);
-      marker.addTo(map);
+      // console.log(
+      //   parseFloat(row.decimalLatitude),
+      //   parseFloat(row.decimalLongitude),
+      //   row.id
+      // );
+      boundsArr.push(
+        L.latLng(
+          parseFloat(row.decimalLatitude),
+          parseFloat(row.decimalLongitude)
+        )
+      );
+      let marker = L.marker(
+        L.latLng(
+          parseFloat(row.decimalLatitude),
+          parseFloat(row.decimalLongitude)
+        ),
+        {
+          opacity: 1,
+          zIndexOffset: 1000
+        }
+      ).bindPopup(popup);
+      // .addTo(markersCluster);
+      markersCluster.addLayer(marker);
     }
-    var bounds = new L.LatLngBounds(boundsArr);
-    map.fitBounds(bounds, { padding: [100, 100] });
+    // map.addLayer(markersCluster);
+    let bounds = new L.LatLngBounds(boundsArr);
+    map.fitBounds(bounds, { padding: [200, 200] });
   });
 
   map.attributionControl.setPrefix(
@@ -112,7 +180,7 @@ function getTaxa(filename) {
     // Use PapaParse to convert string to array of objects
     let data = Papa.parse(csvString, {
       header: true,
-      dynamicTyping: true,
+      dynamicTyping: true
     }).data;
 
     let kingdomsTemp = [];
@@ -135,9 +203,16 @@ function getTaxa(filename) {
         // console.log(k, item.kingdom);
         if (k == item.kingdom) {
           // push item to scinamesArr
-          scinamesArr.push(
-            `<em>${item.scientificName}</em> ${item.scientificNameAuthorship}`
-          );
+          // console.log(item.scientificNameAuthorship);
+          if (item.scientificNameAuthorship == null) {
+            scinamesArr.push(
+              `<em>${item.scientificName}</em> <a style="color: blue; text-decoration: underline;" href="https://serv.biokic.asu.edu/ecdysis/taxa/index.php?tid=${item.taxonID}">See taxon profile</a>`
+            );
+          } else {
+            scinamesArr.push(
+              `<em>${item.scientificName}</em> ${item.scientificNameAuthorship} <a style="color: blue; text-decoration: underline;" href="https://serv.biokic.asu.edu/ecdysis/taxa/index.php?tid=${item.taxonID}">See taxon profile</a>`
+            );
+          }
         }
       });
       let scinames = onlyUnique(scinamesArr).sort();
@@ -166,7 +241,7 @@ function getSpecimens(filename) {
     // Use PapaParse to convert string to array of objects
     let results = Papa.parse(csvString, {
       header: true,
-      dynamicTyping: true,
+      dynamicTyping: true
     });
     let data = results.data;
     let table = document.createElement("table");
@@ -188,7 +263,7 @@ function getSpecimens(filename) {
       "county",
       "municipality",
       "locality",
-      "references",
+      "references"
     ];
 
     headers.forEach((col) => {
@@ -210,7 +285,7 @@ function getSpecimens(filename) {
         if (useCols.indexOf(key) > -1) {
           let newCell = table.rows[table.rows.length - 1].insertCell();
           if (row[key] == null) {
-            newCell.textContent = "NULL";
+            newCell.textContent = " ";
           } else {
             switch (key) {
               case "references":
@@ -240,6 +315,6 @@ function arrayToTable(tableData) {
     });
     table.append(row);
   });
-  console.log(table);
+  // console.log(table);
   return table;
 }

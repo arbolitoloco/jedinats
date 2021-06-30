@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>ASU JEDI Naturalists | Profile</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.png" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2322543d%22></rect><path fill=%22%23fff%22 d=%22M49.95 81.95L49.95 81.95Q45.37 81.95 41.27 80.78Q37.17 79.61 33.98 77.27Q30.79 74.93 28.90 71.33Q27.01 67.73 26.83 62.87L26.83 62.87Q26.83 62.06 27.37 61.47Q27.91 60.89 28.80 60.89L28.80 60.89L33.66 60.89Q34.66 60.89 35.24 61.47Q35.83 62.06 36.01 62.96L36.01 62.96Q36.37 67.01 38.34 69.48Q40.33 71.96 43.39 73.13Q46.45 74.30 50.14 74.30L50.14 74.30Q56.98 74.30 60.58 69.80Q64.17 65.30 64.17 57.83L64.17 57.83L64.17 25.88L32.23 25.88Q31.33 25.88 30.74 25.30Q30.16 24.71 30.16 23.81L30.16 23.81L30.16 20.12Q30.16 19.22 30.74 18.63Q31.33 18.05 32.23 18.05L32.23 18.05L71.02 18.05Q72.00 18.05 72.59 18.63Q73.17 19.22 73.17 20.21L73.17 20.21L73.17 58.01Q73.17 65.30 70.38 70.70Q67.59 76.10 62.46 79.02Q57.34 81.95 49.95 81.95Z%22></path></svg>"
+    />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/layouts.css" />
+    <link rel="stylesheet" href="../css/cards.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    />
+
+    <meta name="theme-color" content="#fafafa" />
+
+    <!-- Components -->
+    <script
+      src="../js/components/header-component.js"
+      type="text/javascript"
+      defer
+    ></script>
+    <script
+      src="../js/components/footer-component.js"
+      type="text/javascript"
+      defer
+    ></script>
+    <script src="../js/profile.js" type="text/javascript" defer></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="../js/leaflet/leaflet.css" />
+    <script src="../js/leaflet/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.0/dist/leaflet.markercluster.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.0/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.0/dist/MarkerCluster.Default.css"
+    />
+
+    <!-- Load jQuery and PapaParse to read data from a CSV file -->
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+  </head>
+
+  <body class="page">
+    <header-component class="w-screen"></header-component>
+    <main class="container lg:w-3/4 md:w-full mx-auto">
+      <section class="grid grid-cols-2 mx-auto bg-gray-100 my-4 rounded-md">
+        <div class="px-10">
+          <h1 class="text-green-600 font-semibold">Marcus Reid</h1>
+          <!-- <p>
+            Lorem ip deez nutz, dolor sit amet consectetur adipisicing elit.
+            Laudantium id provident inventore doloremque assumenda iste velit,
+            nam voluptatum quam adipisci eum expedita impedit blanditiis quia
+            rerum earum nostrum. Harum, ad?
+          </p> -->
+          <!-- <p class="my-6">
+            <a
+              class="border border-green-600 text-green-600 hover:bg-green-600 hover:text-gray-200 rounded px-4 py-2 my-4"
+            >
+              View my posts at BioKIC
+          
+          </a>
+          </p> -->
+          <p class="my-6">
+            <a
+              class="
+                border border-green-600
+                text-green-600
+                hover:bg-green-600 hover:text-gray-200
+                rounded
+                px-4
+                py-2
+                my-4
+                mx-2
+              "
+              href="http://twitter.com/MarcusIsPresent"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Follow on Twitter</a
+            >
+          </p>
+
+          <p class="my-6">
+            <a
+              href="https://www.instagram.com/marcusispresent/"
+              target="_blank"
+              alt="Link to Marcus Reid's Instagram"
+              class="
+                border border-green-600
+                text-green-600
+                hover:bg-green-600 hover:text-gray-200
+                rounded
+                px-4
+                py-2
+                my-4
+                mx-2
+              "
+            >
+              Instagram</a
+            >
+          </p>
+
+          <p class="my-6">
+            <a
+              href="https://orcid.org/0000-0003-1868-9726"
+              target="_blank"
+              alt="Link to Marcus Reid's ORCID page"
+              class="
+                border border-green-600
+                text-green-600
+                hover:bg-green-600 hover:text-gray-200
+                rounded
+                px-4
+                py-2
+                my-4
+                mx-2
+              "
+            >
+              View my ORCID</a
+            >
+          </p>
+          <div>
+            <p class="my-6 text-black font-semibold">
+              Biodiversity portals I've contributed with
+            </p>
+            <ul>
+              <li>Plants</li>
+              <li>Verts</li>
+              <li>Inverts</li>
+            </ul>
+          </div>
+          <!-- <p class="mt-10 w-full lg:w-2/5">My social media icons</p> -->
+        </div>
+        <div>
+          <img
+            class="w-full mx-auto"
+            src="../img/MarcusReid6.gif"
+            alt="Marcus"
+          />
+        </div>
+      </section>
+      <h1 class="text-green-600 font-semibold my-10">My Biodiversity Report</h1>
+      <h2>
+        Specimens and taxa collected, processed and digitized during the JEDI
+        program.
+      </h2>
+      <section class="mt-4">
+        <h2>Map</h2>
+        <div id="map"></div>
+      </section>
+      <section id="taxa">
+        <h2>Species List</h2>
+      </section>
+      <section id="specimens" class="block overflow-x-auto">
+        <h2>Specimens Table</h2>
+      </section>
+    </main>
+    <footer-component></footer-component>
+    <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      addMap("Marcus data.csv");
+      getTaxa("Marcus data.csv");
+      getSpecimens("Marcus data.csv");
+    </script>
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <!-- <script>
+window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script> -->
+  </body>
+</html>

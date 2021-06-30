@@ -1,40 +1,44 @@
-[{
-    "id": "lineu",
-    "name": "Carl von Linné",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Carl_von_Linn%C3%A9.jpg/800px-Carl_von_Linn%C3%A9.jpg",
-    "shortbio": "The \"father of modern taxonomy\".",
-    "bio": "I was a Swedish botanist, zoologist, taxonomist, and physician who formalised binomial nomenclature, the modern system of naming organisms. For that I'm known as the \"father of modern taxonomy\".",
-    "links": [
-      { "Wikipedia": "https://en.wikipedia.org/wiki/Carl_Linnaeus" },
-      { "Twitter": "https://twitter.com/LinneanSociety" }
-    ]
+[
+  {
+    "id": "faith",
+    "name": "Faith Cisneros",
+    "img": "img/Faith Cisneros Headshot (1).jpg",
+    "shortbio": "An Undergraduate at Arizona State University majoring in Biology and Society as well as Politics and the Economy.",
+    "bio": "I am a student with an interest and fascination in science communication and political applications of science. I have intermediate programming skills from working with robotics using Java and from using R as a bioinformatics intern for The Translational Genomics Research Institute’s Integrative Cancer Genomic Division. As a JEDI Scholar at the ASU Biocollections Center, my foot has been dipped into biodiversity through some exposure to entomology, botany, and vertebrates. In my free time my favorite things to do aside from spending time with loved ones are reading and writing poetry and prose. Longboarding, skateboarding, and jogging are also preferred pastimes for me when I’m itching to go outside.",
+    "links": [{ "ORCID": "https://orcid.org/0000-0002-5443-1290" }]
   },
   {
-    "id": "merian",
-    "name": "Maria Sibylla Merian",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/7/74/Maria_Sibylla_Merian_portrait_colors.jpeg",
-    "shortbio": "German-born naturalist and scientific illustrator.",
+    "id": "mary",
+    "name": "Mary Haddad",
+    "img": "img/youngmary.JPG",
+    "shortbio": "Arab biologist and biodiversity enthusiast.",
     "bio": "I was a German-born naturalist and scientific illustrator, a descendant of the Frankfurt branch of the Swiss Merian family, and one of the first early European naturalists to observe insects directly.",
     "links": [
-      { "Wikipedia": "https://en.wikipedia.org/wiki/Maria_Sibylla_Merian" }
+      { "Twitter": "https://twitter.com/h9ddad" },
+      { "ORCID": "https://orcid.org/0000-0003-0760-3560" }
     ]
   },
   {
-    "id": "darwin",
-    "name": "Charles Darwin",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Charles_Darwin_seated_crop.jpg/220px-Charles_Darwin_seated_crop.jpg",
-    "shortbio": "World traveller.",
-    "bio": "I was an English naturalist, geologist and biologist, best known for my contributions to the science of evolution. My proposition that all species of life have descended over time from common ancestors is now widely accepted, and considered a foundational concept in science.",
-    "links": [{ "Wikipedia": "https://en.wikipedia.org/wiki/Charles_Darwin" }]
+    "id": "savage",
+    "name": "Savage Cree Hess",
+    "img": "img/Savage.jpg",
+    "shortbio": "Molecular Biology student at ASU and tabletop game designer.",
+    "bio": "Savage Cree Hess is a Cree, Blackfoot, and Norwegian student at ASU studying molecular biology. He’s involved in research searching for novel viruses in urban coyote populations. He hopes to continue his work in the field and the lab and bring a better understanding to the unseen world. Outside of work, he designs tabletop games and writes short horror stories. ",
+    "links": [
+      { "Twitter": "https://twitter.com/SavageHess" },
+      { "ORCID": "https://orcid.org/0000-0001-9242-2435" }
+    ]
   },
   {
-    "id": "humboldt",
-    "name": "Alexander von Humboldt",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Stieler%2C_Joseph_Karl_-_Alexander_von_Humboldt_-_1843.jpg/220px-Stieler%2C_Joseph_Karl_-_Alexander_von_Humboldt_-_1843.jpg",
-    "shortbio": "German polymath, geographer, naturalist, explorer.",
+    "id": "marcus",
+    "name": "Marcus Reid",
+    "img": "img/MarcusReid1.jpg",
+    "shortbio": " Majoring in Health Science. Next Generation Service Corps. Minor Biological Sciences. Plants, Hikes, Ecology and Hockey",
     "bio": "I was a German polymath, geographer, naturalist, explorer, and proponent of Romantic philosophy and science. My work on botanical geography laid the foundation for the field of biogeography, and my advocacy of long-term systematic geophysical measurement laid the foundation for modern geomagnetic and meteorological monitoring.",
     "links": [
-      { "Wikipedia": "https://en.wikipedia.org/wiki/Alexander_von_Humboldt" }
+      { "Twitter": "https://twitter.com/MarcusIsPresent" },
+      { "ORCID": "https://orcid.org/0000-0003-1868-9726" },
+      { "Instagram": "https://www.instagram.com/marcusispresent/" }
     ]
   }
 ]
